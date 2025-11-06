@@ -1,9 +1,11 @@
+from bson import ObjectId
+
 def noteEntity(item) -> dict:
     return {
         "id": str(item["_id"]),
         "title": item["title"],
         "content": item["content"],
-        "important": item["important"]
+        "important": item["important",False]
     }
 
 def notesEntity(items) ->list:
