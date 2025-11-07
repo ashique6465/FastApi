@@ -52,15 +52,23 @@
 <div class="container">
   <h2>Your Notes</h2>
   {% if newDocs %}
-  <ul>
-
+<ul class="list-group">
   {% for item in newDocs %}
-  <div>{{item.content}}</div>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div>
+      <div class="fw-bold">{{ item.title }}</div>
+      {{ item.content }}
+    </div>
+
+    <form method="post" action="/delete/{{ item.id }}" onsubmit="return confirm('Delete this note?');" style="margin:0;">
+      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+    </form>
+  </li>
   {% endfor %}
- </ul>
- {% else %}
- <p> No notes yet.</p>
- {% endif %}
+</ul>
+{% else %}
+<p>No notes yet.</p>
+{% endif %}
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
